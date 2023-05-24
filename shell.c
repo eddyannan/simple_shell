@@ -14,7 +14,7 @@ void _prints(char *message)
 /**
  * displayPrompt - Display the shell prompt
  */
-void displayPrompt(void)
+void displayPrompt()
 {
 	_prints("Shell$ ");
 }

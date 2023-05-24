@@ -9,7 +9,7 @@
 
 void main_function();
 void _prints(char* message);
-void displayPrompt(void);
+void displayPrompt();
 char* readCommand();
 void executeCommand();
 int isExitCommand(char* command);

@@ -6,7 +6,7 @@
  * Return: 0 on success
  */
 
-int main(void)
+int main()
 {
 	char *command;
 
