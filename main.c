@@ -1,12 +1,10 @@
 #include "main.h"
-
 /**
  * main - Entry point of the program
  *
  * Return: 0 on success
  */
-
-int main()
+int main(void)
 {
 	char *command;
 
@@ -18,22 +16,25 @@ int main()
 		if (command == NULL)
 		{
 			/* Exit the shell when command is NULL (Ctrl + D) */
-			_prints("Exiting the shell...\n");
+			_prints("Exiting the shell...");
 			break;
-			}
-			/* Remove newline character from the command */
-			command[strcspn(command, "\n")] = '\0';
+		}
 
-			if (strcmp(command, "exit") == 0)
-			{
-				/* Exit the shell if the command is "exit" */
-				_prints("Exiting the shell...\n");
-				break;
-				}
-				executeCommand(command);
+		/* Remove newline character from the command */
+		command[strcspn(command, "\n")] = '\0';
 
-				free(command);
-				command = NULL;
-				}
-				return (0);
-				}
+		if (strcmp(command, "exit") == 0)
+		{
+			/* Exit the shell if the command is "exit" */
+			_prints("Exiting the shell...");
+			break;
+		}
+
+		executeCommand(command);
+
+		free(command);
+		command = NULL; /* Reset command to NULL */
+	}
+
+	return (0);
+}

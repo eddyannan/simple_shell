@@ -3,6 +3,8 @@
 /**
  * executeCommand - Execute a command in the shell
  * @command: The command to be executed
+ *
+ * Return: None
  */
 void executeCommand(char *command)
 {
@@ -12,16 +14,16 @@ void executeCommand(char *command)
 	{
 		_prints("Fork failed");
 		exit(EXIT_FAILURE);
-		}
-		else if (pid == 0)
-		{
-			/* Child process */
-			system(command);
-			exit(EXIT_SUCCESS);
-			}
-			else
-			{
-				/* Parent process */
-				wait(NULL);
-				}
-				}
+	}
+	else if (pid == 0)
+	{
+		/* Child process */
+		system(command);
+		exit(EXIT_SUCCESS);
+	}
+	else
+	{
+		/* Parent process */
+		wait(NULL);
+	}
+}

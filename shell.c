@@ -5,16 +5,20 @@
 /**
  * _prints - Print a message to the standard output
  * @message: The message to be printed
+ *
+ * Return: None
  */
 void _prints(char *message)
 {
-	 printf("%s", message);
+	printf("%s\n", message);
 }
 
 /**
  * displayPrompt - Display the shell prompt
+ *
+ * Return: None
  */
-void displayPrompt()
+void displayPrompt(void)
 {
 	_prints("Shell$ ");
 }
@@ -24,7 +28,7 @@ void displayPrompt()
  *
  * Return: The command entered by the user
  */
-char *readCommand()
+char *readCommand(void)
 {
 	char *command = NULL;
 	size_t bufsize = 0;
@@ -34,11 +38,10 @@ char *readCommand()
 		/* Handle end of file (Ctrl+D) */
 		free(command);
 		return (NULL);
-		}
+	}
 
-		return (command);
-		}
-
+	return (command);
+}
 
 /**
  * _strcspn - Find the length of the initial segment of a string
@@ -58,12 +61,11 @@ size_t _strcspn(const char *s, const char *reject)
 			if (*p == *r)
 			{
 				return (p - s);
-				}
-				}
-				}
-
-				return (p - s);
-				}
+			}
+		}
+	}
+	return (p - s);
+}
 
 /**
  * _strcmp - Compare two strings
