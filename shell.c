@@ -10,7 +10,7 @@
  */
 void _prints(char *message)
 {
-	printf("%s\n", message);
+	printf("%s", message);
 }
 
 /**

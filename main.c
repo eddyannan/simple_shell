@@ -4,7 +4,7 @@
  *
  * Return: 0 on success
  */
-int main(void)
+int main()
 {
 	char *command;
 
@@ -16,7 +16,7 @@ int main(void)
 		if (command == NULL)
 		{
 			/* Exit the shell when command is NULL (Ctrl + D) */
-			_prints("Exiting the shell...");
+			_prints("Exiting the shell...\n");
 			break;
 		}
 
@@ -26,7 +26,7 @@ int main(void)
 		if (strcmp(command, "exit") == 0)
 		{
 			/* Exit the shell if the command is "exit" */
-			_prints("Exiting the shell...");
+			_prints("Exiting the shell...\n");
 			break;
 		}
 

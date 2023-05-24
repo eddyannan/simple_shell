@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
+int main();
 void main_function();
 void _prints(char* message);
 void displayPrompt();
@@ -17,4 +18,4 @@ size_t _strcspn(const char *s, const char *reject);
 int _strcmp(const char *s1, const char *s2);
 
 
-#endif  
+#endif
