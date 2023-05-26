@@ -13,8 +13,8 @@ int interactive1(info_t *info)
 
 /**
  * is_del - this checks if character is a delimeter
- * @c: the char to check
- * @de: the delimeter string
+ * @s: the char to check
+ * @del: the delimeter string
  * Return: 1 if true, 0 if false
  */
 int is_del(char s, char *del)
@@ -26,8 +26,8 @@ int is_del(char s, char *del)
 }
 
 /**
- *_isalpha - checks for alphabetic character
- *@c: The character to input
+ *_isalpha1 - checks for alphabetic character
+ *@s: The character to input
  *Return: 1 if c is alphabetic, 0 otherwise
  */
 
@@ -72,4 +72,3 @@ int _atoi(char *s)
 
 	return (output);
 }
-
