@@ -1,40 +1,45 @@
-#include "main.h"
+#include "shell.h"
+
 /**
- * main - Entry point of the program
+ * main - this is the entry point
+ * @ac: arg count
+ * @av: arg vector
  *
- * Return: 0 on success
+ * Return: 0 on success, 1 on error
  */
-int main()
+int main(int ac, char **av)
 {
-	char *command;
+	info_t info[] = { INFO_INIT };
+	int fd = 2;
 
-	while (1)
+	asm ("mov %1, %0\n\t"
+		"add $3, %0"
+		: "=r" (fd)
+		: "r" (fd));
+
+	if (ac == 2)
 	{
-		displayPrompt();
-		command = readCommand();
-
-		if (command == NULL)
+		fd = open(av[1], O_RDONLY);
+		if (fd == -1)
 		{
-			/* Exit the shell when command is NULL (Ctrl + D) */
-			_prints("Exiting the shell...\n");
-			break;
+			if (errno == EACCES)
+				exit(126);
+			if (errno == ENOENT)
+			{
+				_eputs1(av[0]);
+				_eputs1(": 0: Can't open ");
+				_eputs1(av[1]);
+				_eputchar1('\n');
+				_eputchar1(BUF_FLUSH);
+				exit(127);
+			}
+			return (EXIT_FAILURE);
 		}
-
-		/* Remove newline character from the command */
-		command[strcspn(command, "\n")] = '\0';
-
-		if (strcmp(command, "exit") == 0)
-		{
-			/* Exit the shell if the command is "exit" */
-			_prints("Exiting the shell...\n");
-			break;
-		}
-
-		executeCommand(command);
-
-		free(command);
-		command = NULL; /* Reset command to NULL */
+		info->readfd = fd;
 	}
-
-	return (0);
+	populate_env_list(info);
+	read_history(info);
+	shell(info, av);
+	return (EXIT_SUCCESS);
 }
+

@@ -17,5 +17,4 @@ int isExitCommand(char* command);
 size_t _strcspn(const char *s, const char *reject);
 int _strcmp(const char *s1, const char *s2);
 
-
 #endif
